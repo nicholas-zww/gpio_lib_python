@@ -72,6 +72,9 @@ const int pin_to_gpio_rev[41]={-1,-1,-1,GPIO8_A4,-1,GPIO8_A5,-1,GPIO0_C1,GPIO5_B
 #else
 const int pin_to_gpio_rev[41] = {-1, -1, -1, 2, -1, 3, -1, 4, 14, -1, 15, 17, 18, 27, -1, 22, 23, -1, 24, 10, -1, 9, 25, 11, 8, -1, 7, -1, -1, 5, -1, 6, 12, 13, -1, 19, 16, 26, 20, -1, 21 };//it depend on ee
 #endif
+const int (*pin_to_gpio)[41];
+int gpio_direction[300];
+
 const int bcm_gpio_to_pin[28]={
 	27,28, 3, 5, 7,	//GPIO0-4
 	29,31,26,24,21, //GPIO5-9

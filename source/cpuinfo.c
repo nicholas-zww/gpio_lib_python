@@ -48,14 +48,15 @@ int get_asuspi_info(asuspi_info *info)
 	fclose(fp);
 
 	if (!found)
-		return -1;
-	info->p1_revision = 3;
-	strcpy(info->revision, revision);
-	info->type = "Tinker Board";
-	info->processor = "ROCKCHIP3288";
-	info->manufacturer = "ASUS";
-	info->ram = "1024M";
-
+	{
+		//return -1;
+		info->p1_revision = 3;
+		strcpy(info->revision, revision);
+		info->type = "Tinker Board";
+		info->processor = "ROCKCHIP3399";
+		info->manufacturer = "ASUS";
+		info->ram = "4096M";
+	}
 	return 0;
 }
 

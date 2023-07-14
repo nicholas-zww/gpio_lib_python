@@ -32,6 +32,8 @@ static PyObject *asuspi_revision; // deprecated
 static PyObject *board_info;
 static int gpio_warnings = 1;
 
+static asuspi_info asuspiinfo;
+
 struct py_callback
 {
    unsigned int gpio;
@@ -261,6 +263,8 @@ static PyObject *py_setup_channel(PyObject *self, PyObject *args, PyObject *kwar
 		return NULL;
 
 #if PY_MAJOR_VERSION > 2
+	int PyList = PyList_Check(chanlist);
+	int PyTuple = PyTuple_Check(chanlist);
 	if (PyLong_Check(chanlist)) 
 	{
 		channel = (int)PyLong_AsLong(chanlist);
@@ -273,11 +277,11 @@ static PyObject *py_setup_channel(PyObject *self, PyObject *args, PyObject *kwar
 		return NULL;
 		chanlist = NULL;
 	} 
-	else if PyList_Check(chanlist) 
+	else if (PyList) 
 	{
 		// do nothing
 	} 
-	else if PyTuple_Check(chanlist) 
+	else if (PyTuple)
 	{
 		chantuple = chanlist;
 		chanlist = NULL;
